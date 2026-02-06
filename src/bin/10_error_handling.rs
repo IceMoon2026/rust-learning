@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io::{ErrorKind, Read};
 
 fn main() {
     // ===== panic! =====
@@ -38,7 +38,7 @@ fn open_file(filename: &str) -> Result<File, std::io::Error> {
 }
 
 fn read_username_from_file() -> Result<String, std::io::Error> {
-    let mut f = File::open("hello.txt")?;
+    let mut f: File = File::open("hello.txt")?;
     let mut s = String::new();
     f.read_to_string(&mut s)?;
     Ok(s)
